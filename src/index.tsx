@@ -1,15 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {store} from "./store";
+import {positions, Provider as AlertProvider, transitions} from 'react-alert';
+import {Provider} from "react-redux";
+import {Alert} from "./components/alert";
+
+const options = {
+    position: positions.TOP_RIGHT,
+    timeout: 3000,
+    offset: '20px',
+    transition: transitions.SCALE,
+};
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+          <AlertProvider template={Alert} {
+              ...options
+          }>
+          <App />
+          </AlertProvider>
+      </Provider>
   </React.StrictMode>
 );
 

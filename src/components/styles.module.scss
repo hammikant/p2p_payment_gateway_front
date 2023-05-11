@@ -1,0 +1,239 @@
+
+.form{
+  display: flex;
+  flex-direction: column;
+  max-width: 460px;
+  width: 100%;
+  min-height: 451px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(31, 54, 77, 0.06);
+  border-radius: 32px 32px 20px 20px;
+  padding: 10px;
+
+  @media screen and (min-width: 768px) {
+    padding: 48px 28px;
+    border-radius: 32px;
+  }
+
+  &__header{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &Title{
+      font-family: Inter, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      color: #132940;
+      margin: 0;
+    }
+    &Text{
+      font-family: Inter, sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+      color: #132940;
+      margin: 0;
+    }
+  }
+
+  &__icon{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #69788C;
+  }
+
+
+  &__spbTooltip{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #69788C;
+  }
+}
+
+.mt16{
+ margin-top: 16px;
+}
+
+.mt48{
+  margin-top: 48px;
+}
+
+.buttons{
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 24px;
+
+  &__box{
+    &:first-of-type{
+      width: 60%;
+    }
+    &:last-of-type{
+      width: 40%;
+      padding-left: 10px;
+    }
+  }
+
+  &__box50{
+    width: 48%;
+  }
+}
+
+.switcher{
+  display: flex;
+  background: #F2F5FA;
+  border-radius: 90px;
+  overflow: hidden;
+  padding: 2px;
+
+  &__button{
+    width: 50%;
+    padding: 8px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #69788C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 90px;
+
+    & svg {
+      margin: 0 7px;
+    }
+
+    &:hover{
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: 539px) {
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+
+  &__active{
+    background: #FFFFFF;
+    color: #132940;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.modal{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(8, 14, 19, 0.56);
+  }
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    max-width: 460px;
+    width: 100%;
+    min-height: 451px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(31, 54, 77, 0.06);
+    border-radius: 32px 32px 20px 20px;
+    padding: 10px;
+    z-index: 101;
+
+    @media screen and (min-width: 768px) {
+      padding: 48px 28px;
+      border-radius: 32px;
+    }
+  }
+
+  &__title{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: #132940;
+    margin: 0;
+  }
+
+  &__text{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #132940;
+    margin: 0;
+  }
+
+  &__output{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 11px;
+    border-radius: 12px;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #69788C;
+    background: #F2F5FA;
+
+    &__flexStart{
+      justify-content: flex-start;
+    }
+  }
+}
+
+.label {
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #667180;
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+
+.clipboard{
+  &:hover{cursor: pointer}
+}
+
+.writing{
+  &__title{
+
+  }
+}

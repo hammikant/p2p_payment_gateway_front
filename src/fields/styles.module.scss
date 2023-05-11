@@ -1,0 +1,154 @@
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.label {
+  display: inline-flex;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #667180;
+  margin-bottom: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 11px;
+  border-radius: 12px;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #69788C;
+  background: #F2F5FA;
+  border: none;
+
+  &::placeholder {
+    color: #303740;
+  }
+}
+
+.icon {
+  position: absolute;
+  width: 30px;
+  right: 16px;
+  bottom: 12px;
+}
+
+.errorText {
+  position: absolute;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 24px;
+  color: #F22451;
+  margin: 0;
+}
+
+.select {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border: 1px solid #D5D9E0;
+
+  &:hover {
+    cursor: pointer
+  }
+
+  &Icon {
+    margin-left: 10px;
+  }
+
+  &CustomIcon {
+    margin-right: 10px;
+  }
+
+  &Output {
+    width: 100%;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #132940;
+    display: block;
+
+
+    &::placeholder {
+      color: #303740;
+    }
+  }
+
+  &List {
+    position: absolute;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 8px 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  &Item {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #132940;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    transition: .3s;
+
+    &:hover {
+      background-color: #F2F5FA;
+      cursor: pointer;
+      transition: .3s;
+    }
+  }
+
+  &__image{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+}
+
+
+.button{
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  outline: none;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.filled{
+  background-color: #007AFF;
+  color: #ffffff;
+  border: 1px solid #007AFF;
+}
+
+.outline{
+  background-color: transparent;
+  color: #69788C;
+  border: 1px solid #D5D9E0
+}
