@@ -43,7 +43,7 @@ export const getInitialData = createAsyncThunk(
 
 export interface IPayloadData {
     payments_type: 'bank' | 'spb',
-    bankName?: string;
+    bank?: string;
 }
 
 interface IPaymentsDataResponse {
@@ -67,7 +67,7 @@ export const sendPaymentsType = createAsyncThunk(
     async (data:IPayloadData, {dispatch}) => {
         try {
             await mockInstanceApi.onPost('/payload-type')
-                .reply(200, IPaymentsDataResponse);
+                .reply(200, {...IPaymentsDataResponse, bank: data.bank});
             const res = await instanceApi.post<IPaymentsDataResponse>('/payload-type', data);
 
             return res.data as IPaymentsDataResponse;
@@ -115,10 +115,10 @@ const transferResponse:TransferResponse = {
 export const sendTransfer = createAsyncThunk(
     'app/sendTransfer',
     //@todo удалить добавление status оно не нужно на проде
-    async ({status}:{status: 'pending' | 'success' | 'rejected'},{dispatch}) => {
+    async ({status, bank}:{status: 'pending' | 'success' | 'rejected', bank: bankNames},{dispatch}) => {
         try {
             await mockInstanceApi.onGet('/transfer')
-                .reply(200, {...transferResponse, status});
+                .reply(200, {...transferResponse, status, bank});
             const res = await instanceApi.get<TransferResponse>('/transfer');
             return res.data as TransferResponse;
         } catch (e) {

@@ -49,6 +49,18 @@
   margin: 0;
 }
 
+.selectWrapper{
+  position: relative;
+}
+
+.selectOverlay{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 .select {
   position: relative;
   width: 100%;
@@ -92,10 +104,11 @@
     background: #ffffff;
     border-radius: 12px;
     padding: 8px 0;
-    top: 0;
+    top: 63px;
     right: 0;
     left: 0;
     z-index: 100;
+    box-shadow: 0 4px 12px rgba(31, 54, 77, 0.12);
   }
 
   &Item {

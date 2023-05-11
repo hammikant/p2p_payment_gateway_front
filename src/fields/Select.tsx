@@ -29,22 +29,20 @@ export const Select = (
         setValue(fieldName, item.value);
         setText(item.label);
     };
-
+    console.log(text)
     return (
         <Controller
             control={control}
             name={fieldName}
             render={({field: {name}, fieldState: {error}}) => (
-                <>
+                <div className={styles.selectWrapper}>
+                    { showDrop ? <div className={styles.selectOverlay} onClick={() => setShowDrop(false)}/> : null}
                     <label className={styles.label}>
                         {label}
                         {tooltip ? <Tooltip text={tooltip}/> : null}
                     </label>
                     <div
-                        className={styles.select}
-                        onMouseEnter={() => setShowDrop(true)}
-                        onMouseLeave={() => setShowDrop(false)}
-                    >
+                        className={styles.select} onClick={() => setShowDrop(true)} >
                         {customIcon
                             ? (<span className={styles.selectCustomIcon}>
                                 {customIcon}
@@ -52,27 +50,28 @@ export const Select = (
                             : null}
                         <output
                             className={styles.selectOutput}
-                            {...register(fieldName)}
                         >{text}</output>
-                        {customIcon === undefined ? <span className={styles.selectIcon}><ChevronDown/></span> : null}
-                        {
-                            showDrop
-                                ? (
-                                    <ul className={styles.selectList}>
-                                        {options.map((item, index) => (
-                                            <li key={index} className={styles.selectItem}
-                                                onClick={() => handleSelect(item)}>
-                                                {item.icon !== null
-                                                    ? <img src={item.icon} className={styles.select__image} alt={'icon'}/>
-                                                    : null}
-                                                {item.label}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                ) : null
-                        }
+                        {customIcon === undefined
+                            ? <span className={styles.selectIcon}><ChevronDown/></span>
+                            : null}
                     </div>
-                </>
+                    {
+                        showDrop
+                            ? (
+                                <ul className={styles.selectList}>
+                                    {options.map((item, index) => (
+                                        <li key={index} className={styles.selectItem}
+                                            onClick={() => handleSelect(item)}>
+                                            {item.icon !== null
+                                                ? <img src={item.icon} className={styles.select__image} alt={'icon'}/>
+                                                : null}
+                                            {item.label}
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : null
+                    }
+                </div>
             )}
         />
     );

@@ -14,7 +14,7 @@ import classNames from "classnames";
 import {Copy} from "../icons";
 import { useTimer } from 'react-timer-hook';
 import {Timer} from "./atomic/Timer";
-import {changeStep, refreshTimer, sendTransfer} from "../store/app.slice";
+import {changeStep, handleSuccess, refreshTimer, sendTransfer} from "../store/app.slice";
 import {Button} from "../fields";
 import {ModalCancel} from "./ModalCancel";
 
@@ -31,7 +31,7 @@ const icons = {
 
 export const Transfer = () => {
     const dispatch = useAppDispatch();
-    const [isOpen, setOpen] = useState<boolean>(false)
+    const [isOpen, setOpen] = useState<boolean>(false);
     const {sum, comment, bank, account_number, payments_type} = useAppSelector(state => state.app);
     const bankName = bankNames.find(b => b.value === bank)?.label;
     const time = new Date();
@@ -43,7 +43,8 @@ export const Transfer = () => {
 
     const renderClipBoard = (text: string) => {
         const readClipboard = async () => {
-            await navigator.clipboard.writeText(text)
+            await navigator.clipboard.writeText(text);
+            dispatch(handleSuccess({message: 'Скопировано в буфер обмена'}))
         }
         return (
             <span className={styles.clipboard} onClick={readClipboard}>
@@ -58,7 +59,7 @@ export const Transfer = () => {
 
     const transferCompleted = () => {
         dispatch(changeStep(3));
-        dispatch(sendTransfer({status: 'success'}))
+        dispatch(sendTransfer({status: 'success', bank}))
     }
 
     return (

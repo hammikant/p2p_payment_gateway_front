@@ -39,13 +39,12 @@ export const bankNames: IBankName[] = [
     {label: 'ВТБ', icon: vtb, value: 'vtb'},
     {label: 'Tinkoff', icon: tinkoff, value: 'tinkoff'},
     {label: 'Альфа', icon: alfa, value: 'alfa'},
-    {label: 'Сбербанк', icon: sbp, value: 'sber'},
+    {label: 'Сбербанк', icon: sber, value: 'sber'},
 ]
 
 export const Form = ({sum}:{sum: number}) => {
     const dispatch = useAppDispatch()
     const [isOpen, setOpen] = useState<boolean>(false)
-    const [isConfirm, setConfirm] = useState<boolean>(false)
     const [isSpb, setSpb] = useState<boolean>(false)
     const {control, register, watch, setValue, getValues, formState: {errors}, handleSubmit} = useForm({
         resolver: yupResolver(isSpb ? schemaSpb : schema)
@@ -59,18 +58,14 @@ export const Form = ({sum}:{sum: number}) => {
         return <span className={styles.form__icon}>RUB</span>
     }
 
-    const handleNext = handleSubmit((values) => {
-        if (isConfirm) {
-        } else {
-
-        }
-    })
-
-    const handleConfirmation = () => {
-        const bank = getValues('bank')
-        const data:IPayloadData = { payments_type:  isSpb ? 'spb' : 'bank', bankName: bank}
+    const handleNext = handleSubmit(async (values) => {
+        const data:IPayloadData = { payments_type:  isSpb ? 'spb' : 'bank', bank: values.bank}
         dispatch(sendPaymentsType(data));
-        setOpen(true)
+    });
+
+    const next = () => {
+        const data:IPayloadData = { payments_type:  isSpb ? 'spb' : 'bank'}
+       dispatch(sendPaymentsType(data));
     }
 
     return (
@@ -114,7 +109,10 @@ export const Form = ({sum}:{sum: number}) => {
                             type={'button'}
                             text={'Продолжить'}
                             handler={
-                                () => isConfirm ? handleNext : handleConfirmation()
+                                () => {
+                                    next()
+                                    setOpen(true)
+                                }
                             }/>
                     </div>
                     <div className={styles.buttons__box}>
@@ -123,11 +121,13 @@ export const Form = ({sum}:{sum: number}) => {
                     </div>
                 </div>
                 <ModalConfirmData
-                    handleConfirm={() => setConfirm(true)}
+                    handleConfirm={ async () => {
+                        await handleNext()
+                    }}
                     isOpen={isOpen}
                     values={getValues()}
                     handleClose={() => setOpen(false)}
-                    handleCancel={() => setConfirm(false)}
+                    handleCancel={() => setOpen(false)}
                 />
             </form>
     );

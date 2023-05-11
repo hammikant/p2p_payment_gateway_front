@@ -17,11 +17,11 @@ export const WaitingTransfer = () => {
 
         setTimeout(() => {
             //@todo удалить добавление status оно не нужно на проде
-            dispatch(sendTransfer({status: 'success'}))
+            dispatch(sendTransfer({status: 'success', bank}))
         }, 1000);
         setTimeout(() => {
             //@todo удалить добавление status оно не нужно на проде
-            dispatch(sendTransfer({status: 'rejected'}))
+            dispatch(sendTransfer({status: 'rejected', bank}))
         }, 2000);
     }, [])
 

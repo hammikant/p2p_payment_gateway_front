@@ -28,7 +28,8 @@ export const ModalConfirmData = (
     }
 
     const startTransfer = () => {
-        dispatch(changeStep(2))
+        dispatch(changeStep(2));
+        handleConfirm()
     }
 
     return (
@@ -54,8 +55,7 @@ export const ModalConfirmData = (
                             handler={startTransfer}/>
                     </div>
                     <div className={styles.buttons__box}>
-                        <Button buttonStyle={'outline'} text={'Отмена'} handler={() => {
-                        }}/>
+                        <Button buttonStyle={'outline'} text={'Отмена'} handler={handleCancel}/>
                     </div>
                 </div>
             </div>
