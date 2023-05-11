@@ -33,13 +33,13 @@ export interface IBankName extends IOption {
 
 export const bankNames: IBankName[] = [
     {label: 'Любой', icon: null, value: 'any'},
+    {label: 'Сбербанк', icon: sber, value: 'sber'},
+    {label: 'Tinkoff', icon: tinkoff, value: 'tinkoff'},
+    {label: 'ВТБ', icon: vtb, value: 'vtb'},
+    {label: 'Альфа', icon: alfa, value: 'alfa'},
     {label: 'Газпром', icon: gazprom, value: 'gazprom'},
     {label: 'Райфайзен', icon: raiffeisen, value: 'raiffeisen'},
-    {label: 'Акбарс', icon: akbars, value: 'akbars'},
-    {label: 'ВТБ', icon: vtb, value: 'vtb'},
-    {label: 'Tinkoff', icon: tinkoff, value: 'tinkoff'},
-    {label: 'Альфа', icon: alfa, value: 'alfa'},
-    {label: 'Сбербанк', icon: sber, value: 'sber'},
+    {label: 'Акбарс', icon: akbars, value: 'akbars'}
 ]
 
 export const Form = ({sum}:{sum: number}) => {

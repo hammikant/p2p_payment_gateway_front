@@ -29,7 +29,7 @@ export const Select = (
         setValue(fieldName, item.value);
         setText(item.label);
     };
-    console.log(text)
+
     return (
         <Controller
             control={control}
